@@ -1,0 +1,19 @@
+--- utils.py	2018-12-12 15:41:59.348090410 +0100
++++ utils-new.py	2018-12-12 15:32:55.608795939 +0100
+@@ -4,7 +4,7 @@
+ Try to not put too many things here, nor to re-implement nbformat.
+ """
+ import ast
+-
++import re
+ 
+ PREAMBLE=\
+ """
+@@ -85,4 +85,7 @@
+         # We want a blank newline after each cell's output.
+         # And the last line of source doesn't have a newline usually.
+         code += '\n\n'
++    code = re.sub("(\n|^[\t ]*)%","\n#%",code)   
+     return code
++
++
